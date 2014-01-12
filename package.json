@@ -1,6 +1,6 @@
 {
   "name": "component-resolver",
-  "description": "resolve local and remote depenencies",
+  "description": "resolve local and remote dependencies",
   "version": "0.0.1",
   "author": {
     "name": "Jonathan Ong",
