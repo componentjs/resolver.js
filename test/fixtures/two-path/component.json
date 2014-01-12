@@ -1,0 +1,11 @@
+{
+  "name": "main",
+  "paths": [
+    "one",
+    "two"
+  ],
+  "locals": [
+    "first",
+    "second"
+  ]
+}

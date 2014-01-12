@@ -1,0 +1,12 @@
+{
+  "name": "simple-dependencies",
+  "dependencies": {
+    "component/emitter": "~1.1.1",
+    "component/domify": "~1.1.1"
+  },
+  "development": {
+    "dependencies": {
+      "component/url": "*"
+    }
+  }
+}

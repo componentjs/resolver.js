@@ -1,0 +1,6 @@
+{
+  "name": "boot",
+  "dependencies": {
+    "component/domify": "1.0.0"
+  }
+}

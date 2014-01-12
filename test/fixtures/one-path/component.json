@@ -1,0 +1,9 @@
+{
+  "name": "one-path",
+  "paths": [
+    "stuff"
+  ],
+  "locals": [
+    "what"
+  ]
+}

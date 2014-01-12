@@ -1,0 +1,12 @@
+{
+  "name": "app1",
+  "dependencies": {
+    "component/emitter": "1.1.1"
+  },
+  "locals": [
+    "boot"
+  ],
+  "paths": [
+    "lib"
+  ]
+}

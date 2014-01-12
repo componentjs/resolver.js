@@ -1,0 +1,12 @@
+{
+  "name": "duplicates",
+  "dependencies": {
+    "component/emitter": "1.0.1"
+  },
+  "locals": [
+    "boot"
+  ],
+  "paths": [
+    "lib"
+  ]
+}

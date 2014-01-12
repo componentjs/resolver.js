@@ -1,0 +1,9 @@
+{
+  "name": "a",
+  "locals": [
+    "b"
+  ],
+  "paths": [
+    "../../inner"
+  ]
+}
