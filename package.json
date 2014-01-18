@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "graceful-fs": "^2.0.1",
-    "minimatch": "~0.2.14",
+    "unglob": "~0.1.0",
     "remotes": "*",
     "semver": "^2.2.1",
     "cogent": "~0.3.4",
