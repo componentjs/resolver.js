@@ -80,9 +80,9 @@ Dependencies have:
 - `ref` - git reference such as `master`, `v1.0.0`, etc.
 - `version` - the semantic version, if any
 
-### var nodes = resolver.flatten(tree, [filter])
+### var nodes = resolver.flatten(tree)
 
-Flattens a tree, ideal for building. You can also manipulate the tree if you'd like. The optional `filter` function allows you to include or exclude nodes, particularly for multiple builds. The default `filter` is `function () { return true }` which includes everything.
+Flattens a tree for building in the proper dependency order. You can also manipulate the tree if you'd like.
 
 ## License
 
