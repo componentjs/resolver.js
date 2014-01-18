@@ -14,32 +14,33 @@ var options = {
   install: true,
   remote: github
 }
+var components = join(process.cwd(), 'components')
 
 function fixture(name) {
   return join(__dirname, 'fixtures', name)
 }
 
 describe('Installer', function () {
+  it('should cleanup the components folder', function (done) {
+    rimraf(components, done)
+  })
   it('should install stuff', co(function* () {
-    rimraf.sync(join(process.cwd(), 'components'))
-
     var resolver = new Resolver({
       dependencies: {
         'component/query': '0.0.2'
       }
     }, options)
     var tree = yield* resolver.tree()
-    var dir = join(process.cwd(), 'components', 'component-query-0.0.2')
+    var dir = join(components, 'component-query-0.0.2')
     fs.statSync(join(dir, 'index.js'))
     fs.statSync(join(dir, 'component.json'))
   }))
 
   it('should install simple-dependencies', co(function* () {
     var resolver = new Resolver(fixture('simple-dependencies'), options)
-    var out = join(process.cwd(), 'components')
     var tree = yield* resolver.tree()
-    fs.statSync(join(out, 'component-emitter-1.1.1', 'component.json'))
-    fs.statSync(join(out, 'component-domify-1.1.1', 'component.json'))
+    fs.statSync(join(components, 'component-emitter-1.1.1', 'component.json'))
+    fs.statSync(join(components, 'component-domify-1.1.1', 'component.json'))
   }))
 
   it('should install font-awesome', co(function* () {
@@ -48,10 +49,25 @@ describe('Installer', function () {
         'fortawesome/font-awesome': '4.0.3'
       }
     }, options)
-    var out = join(process.cwd(), 'components', 'fortawesome-font-awesome-v4.0.3')
+    var out = join(components, 'fortawesome-font-awesome-v4.0.3')
     var tree = yield* resolver.tree()
     fs.statSync(join(out, 'component.json'))
     fs.statSync(join(out, 'css', 'font-awesome.css'))
     fs.statSync(join(out, 'fonts', 'FontAwesome.otf'))
+  }))
+
+  it('should install globs', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'component-test/glob': '0.0.1'
+      }
+    }, options)
+    var tree = yield* resolver.tree()
+    var out = join(components, 'component-test-glob-0.0.1')
+    fs.statSync(join(out, 'lib', 'index.js'))
+    fs.statSync(join(out, 'lib', 'index.css'))
+    var json = require(join(out, 'component.json'))
+    json.scripts.should.eql(['lib/index.js'])
+    json.styles.should.eql(['lib/index.css'])
   }))
 })
