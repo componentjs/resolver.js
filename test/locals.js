@@ -1,4 +1,4 @@
-/**
+  /**
  * For local dependency resolution only.
  */
 
@@ -71,5 +71,23 @@ describe('Locals', function () {
     var b = a.locals['b']
 
     b.path.should.equal(join(__dirname, 'fixtures', 'recursive-path', 'inner', 'b'))
+  }))
+
+  it('should guess the local\'s name if missing', co(function* () {
+    var resolver = new Resolver(fixture('local-no-name'), options)
+    var tree = yield* resolver.tree()
+
+    var thing = tree.locals.thing
+    thing.name.should.equal('thing')
+  }))
+
+  it('should throw if the local\'s name is incorrect', co(function* () {
+    var resolver = Resolver(fixture('local-wrong-name'), options)
+    try {
+      var tree = yield* resolver.tree()
+      throw new Error('wtf')
+    } catch (err) {
+      err.message.should.not.equal('wtf')
+    }
   }))
 })

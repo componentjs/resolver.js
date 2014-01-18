@@ -1,0 +1,9 @@
+{
+  "name": "local-wrong-name",
+  "paths": [
+    "lib"
+  ],
+  "locals": [
+    "thing"
+  ]
+}
