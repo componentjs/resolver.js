@@ -23,7 +23,7 @@
     "remotes": "*",
     "semver": "^2.2.1",
     "cogent": "~0.3.4",
-    "parchan": "~0.1.0",
+    "parchan": "~1.0.0",
     "co": "^3"
   },
   "devDependencies": {
