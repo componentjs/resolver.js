@@ -132,7 +132,7 @@ describe('Dependencies', function () {
     hgp.dependencies['component/classes'].should.be.ok
   }))
 
-  it('should work with double semver nested deps', co(function* () {
+  it('should resolve multiple nested semver deps', co(function* () {
     var resolver = new Resolver({
       dependencies: {
         'yields/select': '0.5.1',
