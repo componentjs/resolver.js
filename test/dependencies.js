@@ -131,4 +131,15 @@ describe('Dependencies', function () {
     hgp.dependencies['math-utils/linear-partitioning'].should.be.ok
     hgp.dependencies['component/classes'].should.be.ok
   }))
+
+  it('should work with double semver nested deps', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'yields/select': '0.5.1',
+        'component/pillbox': '1.3.1'
+      }
+    }, options)
+
+    var tree = yield* resolver.tree()
+  }))
 })
