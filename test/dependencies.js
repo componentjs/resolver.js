@@ -112,4 +112,23 @@ describe('Dependencies', function () {
     embed.ref.should.equal('v1.0.0')
     embed.version.should.equal('1.0.0')
   }))
+
+  it('should work with jonathanong/horizontal-grid-packing', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'jonathanong/horizontal-grid-packing': '<= 0.1.1'
+      }
+    }, options)
+
+    var tree = yield* resolver.tree()
+
+    resolver.locals.length.should.equal(1)
+    resolver.dependencies.length.should.equal(4)
+
+    var hgp = tree.dependencies['jonathanong/horizontal-grid-packing']
+    hgp.version.should.equal('0.1.1')
+
+    hgp.dependencies['math-utils/linear-partitioning'].should.be.ok
+    hgp.dependencies['component/classes'].should.be.ok
+  }))
 })
