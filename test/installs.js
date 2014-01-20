@@ -55,10 +55,10 @@ describe('Installer', function () {
     fs.statSync(join(components, 'component-domify-1.1.1', 'component.json'))
   }))
 
-  it('should install font-awesome', co(function* () {
+  it('should install font-awesome and not care about casing', co(function* () {
     var resolver = new Resolver({
       dependencies: {
-        'fortawesome/font-awesome': '4.0.3'
+        'FortAwesome/Font-Awesome': '4.0.3'
       }
     }, options)
     var out = join(components, 'fortawesome-font-awesome-v4.0.3')
