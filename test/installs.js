@@ -24,6 +24,7 @@ describe('Installer', function () {
   it('should cleanup the components folder', function (done) {
     rimraf(components, done)
   })
+
   it('should install stuff', co(function* () {
     var resolver = new Resolver({
       dependencies: {
@@ -34,6 +35,17 @@ describe('Installer', function () {
     var dir = join(components, 'component-query-0.0.2')
     fs.statSync(join(dir, 'index.js'))
     fs.statSync(join(dir, 'component.json'))
+  }))
+
+  it('should install component/classes', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'component/classes': '1.2.0'
+      }
+    }, options)
+    var tree = yield* resolver.tree()
+    fs.statSync(join(components, 'component-classes-1.2.0', 'component.json'))
+    fs.statSync(join(components, 'component-indexof-0.0.2', 'component.json'))
   }))
 
   it('should install simple-dependencies', co(function* () {
