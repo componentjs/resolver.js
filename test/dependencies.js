@@ -142,4 +142,18 @@ describe('Dependencies', function () {
 
     var tree = yield* resolver.tree()
   }))
+
+  it('should resolve mixed-case deps', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'visionmedia/superagent': '0.16.0'
+      }
+    }, options)
+
+    var tree = yield* resolver.tree()
+
+    var deps = tree.dependencies['visionmedia/superagent'].dependencies
+    deps.should.not.have.property('RedVentures/reduce')
+    deps['redventures/reduce'].type.should.equal('dependency')
+  }))
 })
