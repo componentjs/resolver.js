@@ -23,13 +23,13 @@
     "remotes": "*",
     "semver": "^2.2.1",
     "cogent": "~0.3.4",
-    "parchan": "~1.0.0",
+    "chanel": "~1.0.2",
     "co": "^3"
   },
   "devDependencies": {
     "rimraf": "^2.2.5",
     "mocha": "^1.17.0",
-    "should": "^2.1.1",
+    "should": "^3.0.0",
     "gnode": "~0.0.6",
     "regenerator": "~0.3.4"
   },
