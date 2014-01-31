@@ -1,0 +1,11 @@
+{
+  "name": "conflicts",
+  "paths": [
+    "a",
+    "b"
+  ],
+  "locals": [
+    "one",
+    "two"
+  ]
+}

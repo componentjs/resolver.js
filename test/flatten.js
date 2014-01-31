@@ -61,4 +61,23 @@ describe('Flatten', function () {
       'main'
     ])
   }))
+
+  it('should detect duplicate dependencies', co(function* () {
+    var resolver = new Resolver(fixture('duplicates'), options);
+
+    var tree = yield* resolver.tree();
+    var nodes = resolver.flatten(tree, true);
+
+    Object.keys(nodes.duplicates['component/emitter'])
+    .length.should.equal(2);
+  }))
+
+  it('should detect conflicting local names', co(function* () {
+    var resolver = new Resolver(fixture('conflicts'), options);
+
+    var tree = yield* resolver.tree();
+    var nodes = resolver.flatten(tree, true);
+
+    nodes.conflicts.name.length.should.equal(2);
+  }))
 })
