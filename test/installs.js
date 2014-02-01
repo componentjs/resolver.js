@@ -82,4 +82,36 @@ describe('Installer', function () {
     json.scripts.should.eql(['lib/index.js'])
     json.styles.should.eql(['lib/index.css'])
   }))
+
+  it('should throw when pinned dependencies are not found', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'component-test/asdfasdf': '0.0.1'
+      }
+    }, options);
+
+    try {
+      yield* resolver.tree();
+      throw new Error('wtf');
+    } catch (err) {
+      err.message.should.not.equal('wtf');
+      err.message.should.equal('no remote found for dependency "component-test/asdfasdf@0.0.1".');
+    }
+  }))
+
+  it('should throw when semver dependencies are not found', co(function* () {
+    var resolver = new Resolver({
+      dependencies: {
+        'component-test/asdfasdf': '*'
+      }
+    }, options);
+
+    try {
+      yield* resolver.tree();
+      throw new Error('wtf');
+    } catch (err) {
+      err.message.should.not.equal('wtf');
+      err.message.should.equal('no remote found for dependency "component-test/asdfasdf".');
+    }
+  }))
 })
