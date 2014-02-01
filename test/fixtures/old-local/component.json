@@ -1,0 +1,9 @@
+{
+  "name": "old-local",
+  "paths": [
+    "lib"
+  ],
+  "local": [
+    "boot"
+  ]
+}

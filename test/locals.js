@@ -103,4 +103,10 @@ describe('Locals', function () {
       err.message.should.containEql('local dependency');
     }
   }))
+
+  it('should work with old .local', co(function* () {
+    var resolver = Resolver(fixture('old-local'), options);
+    var tree = yield* resolver.tree();
+    tree.locals.boot.should.be.ok;
+  }))
 })
