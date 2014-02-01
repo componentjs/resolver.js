@@ -87,7 +87,20 @@ describe('Locals', function () {
       var tree = yield* resolver.tree()
       throw new Error('wtf')
     } catch (err) {
-      err.message.should.not.equal('wtf')
+      err.message.should.not.equal('wtf');
+      err.message.should.containEql('name does not match the component');
+    }
+  }))
+
+  it('should throw if the local is missing', co(function* () {
+    var resolver = Resolver(fixture('local-missing'), options);
+    try {
+      var tree = yield* resolver.tree();
+      throw new Error('wtf');
+    } catch (err) {
+      err.message.should.not.equal('wtf');
+      err.message.should.containEql('Cannot resolve');
+      err.message.should.containEql('local dependency');
     }
   }))
 })

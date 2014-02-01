@@ -1,0 +1,9 @@
+{
+  "name": "local-missing",
+  "paths": [
+    "lib"
+  ],
+  "locals": [
+    "asdf"
+  ]
+}
