@@ -27,7 +27,10 @@ describe('Dependencies', function () {
     var classes = tree.dependencies['component/classes']
     classes.ref.should.equal('1.1.4')
     classes.version.should.equal('1.1.4')
-    classes.dependencies['component/indexof'].should.be.ok
+
+    var indexof = classes.dependencies['component/indexof']
+    indexof.should.be.ok
+    indexof.dependents[0].should.equal(classes)
   }))
 
   it('should work with dev', co(function* () {
@@ -77,6 +80,8 @@ describe('Dependencies', function () {
     indexof.version.should.equal('0.0.1')
 
     tree.dependencies['component/indexof'].should.equal(indexof)
+
+    indexof.dependents.length.should.equal(2);
   }))
 
   it('should work with semver', co(function* (){
@@ -128,7 +133,10 @@ describe('Dependencies', function () {
     var hgp = tree.dependencies['jonathanong/horizontal-grid-packing']
     hgp.version.should.equal('0.1.1')
 
-    hgp.dependencies['math-utils/linear-partitioning'].should.be.ok
+    var part = hgp.dependencies['math-utils/linear-partitioning']
+    part.should.be.ok
+    part.dependents.should.include(hgp)
+
     hgp.dependencies['component/classes'].should.be.ok
   }))
 

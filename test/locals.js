@@ -34,7 +34,10 @@ describe('Locals', function () {
     tree.paths.should.have.length(1)
 
     tree.name.should.equal('one-path')
-    tree.locals['what'].name.should.equal('what')
+
+    var what = tree.locals['what']
+    what.name.should.equal('what')
+    what.dependents.should.include(tree)
   }))
 
   it('should with two paths', co(function* () {
