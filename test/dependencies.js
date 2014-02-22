@@ -5,11 +5,7 @@
 var Resolver = require('..')
 
 var co = require('co')
-var Remotes = require('remotes')
-var github = new Remotes.GitHub
-var options = {
-  remote: github
-}
+var options = {}
 
 describe('Dependencies', function () {
   it('should resolve dependencies', co(function* () {
@@ -44,7 +40,6 @@ describe('Dependencies', function () {
         }
       }
     }, {
-      remote: github,
       development: true
     })
 
@@ -121,7 +116,7 @@ describe('Dependencies', function () {
   it('should work with jonathanong/horizontal-grid-packing', co(function* () {
     var resolver = new Resolver({
       dependencies: {
-        'jonathanong/horizontal-grid-packing': '<= 0.1.1'
+        'jonathanong/horizontal-grid-packing': '<= 0.1.4'
       }
     }, options)
 
@@ -131,9 +126,9 @@ describe('Dependencies', function () {
     resolver.dependencies.length.should.equal(4)
 
     var hgp = tree.dependencies['jonathanong/horizontal-grid-packing']
-    hgp.version.should.equal('0.1.1')
+    hgp.version.should.equal('0.1.4')
 
-    var part = hgp.dependencies['math-utils/linear-partitioning']
+    var part = hgp.dependencies['the-swerve/linear-partitioning']
     part.should.be.ok
     part.dependents.should.include(hgp)
 

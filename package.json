@@ -23,18 +23,18 @@
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.1",
-    "remotes": "*",
+    "remotes": "~0.2.0",
     "semver": "^2.2.1",
-    "cogent": "~0.3.13",
-    "chanel": "~1.0.5",
+    "cogent": "~0.3.14",
+    "chanel": "~2.0.2",
     "co": "^3"
   },
   "devDependencies": {
     "rimraf": "^2.2.5",
     "mocha": "^1.17.0",
     "should": "^3.0.0",
-    "gnode": "~0.0.6",
-    "regenerator": "~0.3.9"
+    "gnode": "0",
+    "regenerator": "0"
   },
   "scripts": {
     "test": "NODE=gnode make test",
