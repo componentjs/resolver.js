@@ -39,7 +39,7 @@ describe('Flatten', function () {
     var nodes = resolver.flatten(tree)
 
     nodes.map(toName).should.eql([
-      'component/indexof@0.0.2',
+      'component/indexof@0.0.3',
       'component/emitter@1.0.0',
       'component/emitter@1.0.1',
       'boot',

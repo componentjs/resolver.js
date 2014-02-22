@@ -1,6 +1,7 @@
 {
   "name": "duplicates",
   "dependencies": {
+    "component/indexof": "0.0.3",
     "component/emitter": "1.0.1"
   },
   "locals": [
