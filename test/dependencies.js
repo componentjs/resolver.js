@@ -8,6 +8,10 @@ var co = require('co')
 var options = {}
 
 describe('Dependencies', function () {
+  before(function (done) {
+    require('rimraf')(require('path').resolve('components'), done);
+  })
+
   it('should resolve dependencies', co(function* () {
     var resolver = new Resolver({
       dependencies: {

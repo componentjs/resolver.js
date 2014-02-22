@@ -64,5 +64,3 @@ npm-debug.log
 
 /build
 /components
-/landing/components
-.elasticbeanstalk/

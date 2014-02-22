@@ -6,13 +6,10 @@ var Resolver = require('..')
 
 var co = require('co')
 var rimraf = require('rimraf')
-var Remotes = require('remotes')
 var join = require('path').join
 var fs = require('fs')
-var github = new Remotes.GitHub
 var options = {
   install: true,
-  remote: github
 }
 var components = join(process.cwd(), 'components')
 
@@ -21,7 +18,7 @@ function fixture(name) {
 }
 
 describe('Installer', function () {
-  it('should cleanup the components folder', function (done) {
+  before(function (done) {
     rimraf(components, done)
   })
 
@@ -40,18 +37,19 @@ describe('Installer', function () {
   it('should install component/classes', co(function* () {
     var resolver = new Resolver({
       dependencies: {
-        'component/classes': '1.2.0'
+        'component/classes': '1.2.0',
+        'component/indexof': '0.0.3',
       }
     }, options)
     var tree = yield* resolver.tree()
     fs.statSync(join(components, 'component', 'classes', '1.2.0', 'component.json'))
-    fs.statSync(join(components, 'component', 'indexof', '0.0.2', 'component.json'))
+    fs.statSync(join(components, 'component', 'indexof', '0.0.3', 'component.json'))
   }))
 
   it('should install simple-dependencies', co(function* () {
     var resolver = new Resolver(fixture('simple-dependencies'), options)
     var tree = yield* resolver.tree()
-    fs.statSync(join(components, 'component', 'emitter', '1.1.1', 'component.json'))
+    fs.statSync(join(components, 'component', 'emitter', '1.1.2', 'component.json'))
     fs.statSync(join(components, 'component', 'domify', '1.1.1', 'component.json'))
   }))
 
