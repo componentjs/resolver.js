@@ -5,32 +5,43 @@
 var Resolver = require('..')
 
 var co = require('co')
-var Remotes = require('remotes')
 var join = require('path').join
 
-var options = {
-  remote: new Remotes.GitHub
-}
+var options = {}
 
 function fixture(name) {
   return join(__dirname, 'fixtures', name)
 }
 
 describe('Resolver', function () {
-  it('should resolve app1', co(function* () {
-    var resolver = new Resolver(fixture('app1'), options)
+  describe('app1', function () {
+    var resolver;
+    var tree;
 
-    var tree = yield* resolver.tree()
+    it('should resolve', co(function* () {
+      resolver = new Resolver(fixture('app1'), options)
 
-    resolver.locals.length.should.equal(2)
-    resolver.dependencies.length.should.equal(2)
+      tree = yield* resolver.tree()
 
-    tree.name.should.equal('app1')
-    tree.dependencies['component/emitter'].version.should.equal('1.1.1')
+      resolver.locals.length.should.equal(2)
+      resolver.dependencies.length.should.equal(2)
 
-    var boot = tree.locals['boot']
-    boot.dependencies['component/domify'].version.should.equal('1.0.0')
-  }))
+      tree.name.should.equal('app1')
+      tree.dependencies['component/emitter'].version.should.equal('1.1.1')
+
+      var boot = tree.locals['boot']
+      boot.dependencies['component/domify'].version.should.equal('1.0.0')
+    }))
+
+    it('should have canonical names', co(function* () {
+      var branches = resolver.flatten(tree);
+
+      branches[0].canonical.should.equal('component/emitter@1.1.1');
+      branches[1].canonical.should.equal('component/domify@1.0.0');
+      branches[2].canonical.should.equal('./lib/boot');
+      branches[3].canonical.should.equal('./app1');
+    }))
+  })
 
   it('should work with duplicates', co(function* () {
     var resolver = new Resolver(fixture('duplicates'), options)
