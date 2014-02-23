@@ -1,12 +1,7 @@
-var Resolver = require('..')
+var resolve = require('..')
 
 var co = require('co')
-var Remotes = require('remotes')
 var join = require('path').join
-
-var options = {
-  remote: new Remotes.GitHub
-}
 
 function fixture(name) {
   return join(__dirname, 'fixtures', name)
@@ -19,10 +14,8 @@ function toName(branch) {
 
 describe('Flatten', function () {
   it('should flatten app1', co(function* () {
-    var resolver = new Resolver(fixture('app1'), options)
-
-    var tree = yield* resolver.tree()
-    var nodes = resolver.flatten(tree)
+    var tree = yield* resolve(fixture('app1'));
+    var nodes = resolve.flatten(tree)
 
     nodes.map(toName).should.eql([
       'component/emitter@1.1.1',
@@ -33,10 +26,8 @@ describe('Flatten', function () {
   }))
 
   it('should flatten duplicates', co(function* () {
-    var resolver = new Resolver(fixture('duplicates'), options)
-
-    var tree = yield* resolver.tree()
-    var nodes = resolver.flatten(tree)
+    var tree = yield* resolve(fixture('duplicates'));
+    var nodes = resolve.flatten(tree)
 
     nodes.map(toName).should.eql([
       'component/indexof@0.0.3',
@@ -48,10 +39,8 @@ describe('Flatten', function () {
   }))
 
   it('should flatten two-path', co(function* () {
-    var resolver = new Resolver(fixture('two-path'), options)
-
-    var tree = yield* resolver.tree()
-    var nodes = resolver.flatten(tree)
+    var tree = yield* resolve(fixture('two-path'));
+    var nodes = resolve.flatten(tree)
 
     nodes.map(toName).should.eql([
       'uno',
@@ -63,20 +52,16 @@ describe('Flatten', function () {
   }))
 
   it('should detect duplicate dependencies', co(function* () {
-    var resolver = new Resolver(fixture('duplicates'), options);
-
-    var tree = yield* resolver.tree();
-    var nodes = resolver.flatten(tree, true);
+    var tree = yield* resolve(fixture('duplicates'));
+    var nodes = resolve.flatten(tree, true);
 
     Object.keys(nodes.duplicates['component/emitter'])
     .length.should.equal(2);
   }))
 
   it('should detect conflicting local names', co(function* () {
-    var resolver = new Resolver(fixture('conflicts'), options);
-
-    var tree = yield* resolver.tree();
-    var nodes = resolver.flatten(tree, true);
+    var tree = yield* resolve(fixture('conflicts'));
+    var nodes = resolve.flatten(tree, true);
 
     nodes.conflicts.name.length.should.equal(2);
   }))

@@ -2,7 +2,7 @@
  * For testing installing to components/
  */
 
-var Resolver = require('..')
+var resolve = require('..')
 
 var co = require('co')
 var rimraf = require('rimraf')
@@ -23,56 +23,51 @@ describe('Installer', function () {
   })
 
   it('should install stuff', co(function* () {
-    var resolver = new Resolver({
+    var tree = yield* resolve({
       dependencies: {
         'component/query': '0.0.2'
       }
-    }, options)
-    var tree = yield* resolver.tree()
+    }, options);
     var dir = join(components, 'component', 'query', '0.0.2')
     fs.statSync(join(dir, 'index.js'))
     fs.statSync(join(dir, 'component.json'))
   }))
 
   it('should install component/classes', co(function* () {
-    var resolver = new Resolver({
+    var tree = yield* resolve({
       dependencies: {
         'component/classes': '1.2.0',
         'component/indexof': '0.0.3',
       }
-    }, options)
-    var tree = yield* resolver.tree()
+    }, options);
     fs.statSync(join(components, 'component', 'classes', '1.2.0', 'component.json'))
     fs.statSync(join(components, 'component', 'indexof', '0.0.3', 'component.json'))
   }))
 
   it('should install simple-dependencies', co(function* () {
-    var resolver = new Resolver(fixture('simple-dependencies'), options)
-    var tree = yield* resolver.tree()
+    var tree = yield* resolve(fixture('simple-dependencies'), options);
     fs.statSync(join(components, 'component', 'emitter', '1.1.2', 'component.json'))
     fs.statSync(join(components, 'component', 'domify', '1.1.1', 'component.json'))
   }))
 
   it('should install font-awesome and not care about casing', co(function* () {
-    var resolver = new Resolver({
+    var out = join(components, 'fortawesome', 'font-awesome', 'v4.0.3')
+    var tree = yield* resolve({
       dependencies: {
         'FortAwesome/Font-Awesome': '4.0.3'
       }
-    }, options)
-    var out = join(components, 'fortawesome', 'font-awesome', 'v4.0.3')
-    var tree = yield* resolver.tree()
+    }, options);
     fs.statSync(join(out, 'component.json'))
     fs.statSync(join(out, 'css', 'font-awesome.css'))
     fs.statSync(join(out, 'fonts', 'FontAwesome.otf'))
   }))
 
   it('should install globs', co(function* () {
-    var resolver = new Resolver({
+    var tree = yield* resolve({
       dependencies: {
         'component-test/glob': '0.0.1'
       }
-    }, options)
-    var tree = yield* resolver.tree()
+    }, options);
     var out = join(components, 'component-test', 'glob', '0.0.1')
     fs.statSync(join(out, 'lib', 'index.js'))
     fs.statSync(join(out, 'lib', 'index.css'))
@@ -82,14 +77,12 @@ describe('Installer', function () {
   }))
 
   it('should throw when pinned dependencies are not found', co(function* () {
-    var resolver = new Resolver({
-      dependencies: {
-        'component-test/asdfasdf': '0.0.1'
-      }
-    }, options);
-
     try {
-      yield* resolver.tree();
+      yield* resolve({
+        dependencies: {
+          'component-test/asdfasdf': '0.0.1'
+        }
+      }, options);
       throw new Error('wtf');
     } catch (err) {
       err.message.should.not.equal('wtf');
@@ -98,14 +91,12 @@ describe('Installer', function () {
   }))
 
   it('should throw when semver dependencies are not found', co(function* () {
-    var resolver = new Resolver({
-      dependencies: {
-        'component-test/asdfasdf': '*'
-      }
-    }, options);
-
     try {
-      yield* resolver.tree();
+      yield* resolve({
+        dependencies: {
+          'component-test/asdfasdf': '*'
+        }
+      }, options);
       throw new Error('wtf');
     } catch (err) {
       err.message.should.not.equal('wtf');

@@ -4,32 +4,31 @@ Resolve a component's dependency tree.
 
 - Relies on components' newer [specs](https://github.com/component/spec)
 - Validates and normalizes `component.json`s
-- Supports installing
-- Supports globs
-- Supports semver
+- Supports installing components
+- Supports globs for both remote and local components
+- Supports semver resolution for dependencies
 
 This uses:
 
-- [remotes](https://github.com/component/remotes.js)
-- [downloader](https://github.com/component/downloader.js)
-- [flatten](https://github.com/component/flatten.js)
+- [remotes](https://github.com/component/remotes.js) - normalize remote end points
+- [downloader](https://github.com/component/downloader.js) - downloads repositories
+- [flatten](https://github.com/component/flatten.js) - flatten a dependency tree into a list
 
 ## Example
 
 ```js
-var Resolver = require('component-resolver')
+var resolve = require('component-resolver');
+var flatten = require('component-flatten');
 
-var resolver = new Resolver({
+resolve({
   // a "component.json"
   dependencies: {
     'component/emitter': '1.1.1'
   }
-});
-
-resolver.getTree(function (err, tree) {
+}, function (err, tree) {
   if (err) throw err;
 
-  tree.dependencies['component/emitter']
+  tree.dependencies['component/emitter'];
   /**
    * name: 'component/emitter'
    * version: '1.1.1'
@@ -37,21 +36,21 @@ resolver.getTree(function (err, tree) {
    */
 
    // flatten the dependency tree
-   var nodes = resolver.flatten(tree)
-   nodes[0].name === 'component/emitter'
-})
+   var nodes = flatten(tree);
+   nodes[0].name === 'component/emitter';
+});
 ```
 
 ## API
 
-### var resolver = new Resolver(component, options)
+### resolve(component, [options], [callback])
 
 `component` can either be a "root" folder. If `null`, it's `process.cwd()`. `component` can also be "component.json" object. This is useful for resolving dependencies without reading anything from disk.
 
 The main `options` are:
 
 - `root` <process.cwd()> - if `component.json` is an object, this will set the root.
-- `remote` <`['local', 'github']`> - a `remotes` instance
+- `remote` - a `remotes` instance. Defaults to the local `dir` and `github`.
 - `dev` <false> - include `development` in `local` components
 - `deps` <true> - resolve dependencies
 - `verbose` <false> - print warnings
@@ -70,32 +69,45 @@ Options passed to `component-downloader`:
 - `fields`
 - `archive`
 
-### var tree = yield* resolver.tree()
+`callback` is a function with signature `(err, tree)`. You if no callback is set, a generator is returned.
 
-Returns the dependency tree. There are two types of nodes: `local` for local components and `dependency` for remote components. Properties:
+```js
+resolve(root, options, function (err, tree) {
+
+})
+
+// or if you use generators
+
+co(function* () {
+  var tree = yield* resolve(root, options);
+})
+```
+
+### tree and branches
+
+This resolver returns a `tree`. The tree consists of `branches` that connect `nodes`. Each `node` is the relevant `component.json`. Thus, you can view the `branches` as how each component relates to each other as well as additional metadata.
+
+There are two types of branches: `local` for local components and `dependency` for remote components. Properties:
 
 - `type` - either `local` or `dependency`
 - `name`
-- `dependencies` {}
-- `node`: the node's `component.json`
-
-Local components have:
-
-- `locals` {}
-- `path` - the path of the component, not including `/component.json`
-- `paths` - absolute `.paths` of this component
-- `remotes` - NOT YET IMPLEMENTED
+- `canonical` - a canonical, unique name for this component. For remote dependencies, this is `<user>/<project>@<reference>`. For local components, this is the relative path from `root` to this component's `path`.
+- `dependencies` {} - remote dependencies of this component
+- `locals` {} - local dependencies of this component
+- `dependents` [] - dependents of this component
+- `node` - the node's `component.json`
+- `path` - the path of the component, not including `/component.json`.
+- `filename` - the filename of this `component.json`
+- `paths` - absolute `.paths` of this component. `paths` are inherited from their parent.
+- `remotes` - list of remote names to lookup dependencies of this component. `remotes` are inherited from their parent.
+- `resolvedRemotes` - a list of all the remotes, including this component's parents'
 
 Dependencies have:
 
 - `ref` - git reference such as `master`, `v1.0.0`, etc.
 - `version` - the semantic version, if any
 
-### resolver.getTree(callback)
-
-The non-generator version of `yield* resolver.tree()`.
-
-### var nodes = resolver.flatten(tree)
+### var nodes = resolve.flatten(tree)
 
 Flattens a tree for building in the proper dependency order. You can also manipulate the tree if you'd like. Read more about [component-flatten](https://github.com/component/flatten.js).
 
