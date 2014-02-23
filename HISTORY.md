@@ -3,3 +3,6 @@
 ==================
 
 - changed API signature
+- add canonical names for each component
+- use component-downloader
+- refactor to component-flatten
