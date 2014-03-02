@@ -129,4 +129,17 @@ describe('Dependencies', function () {
     deps.should.not.have.property('RedVentures/reduce')
     deps['redventures/reduce'].type.should.equal('dependency')
   }))
+
+  it('should resolve remote dependencies with their own locals', co(function* () {
+    var tree = yield* resolve({
+      dependencies: {
+        'component-test/locals': '0.0.1'
+      }
+    }, options)
+
+    var locals = tree.dependencies['component-test/locals']
+    locals.locals['boot'].should.be.ok;
+    locals.locals['js'].should.be.ok;
+    locals.locals['css'].should.be.ok;
+  }))
 })
