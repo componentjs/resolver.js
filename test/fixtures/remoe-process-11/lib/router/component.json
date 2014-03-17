@@ -1,0 +1,14 @@
+{
+  "name": "router",
+  "description": "Router",
+  "development": {},
+  "main": "router.js",
+  "scripts": [
+    "router.js"
+  ],
+  "locals": [
+  ],
+  "dependencies": {
+    "ianstormtaylor/router": "*"
+  }
+}

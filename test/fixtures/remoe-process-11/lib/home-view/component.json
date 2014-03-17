@@ -1,0 +1,28 @@
+{
+  "name": "home-view",
+  "description": "Homepage",
+  "development": {},
+  "main": "home.js",
+  "scripts": [
+    "home.js"
+  ],
+  "locals": [
+    "router",
+    "base-styles",
+    "translation",
+    "header",
+    "user-signin-view"
+  ],
+  "json": [
+    "lang.json"
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*"
+  }
+}

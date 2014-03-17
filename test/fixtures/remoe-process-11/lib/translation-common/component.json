@@ -1,0 +1,8 @@
+{
+  "name": "translation-common",
+  "description": "translation-common",
+  "development": {},
+  "json": [
+    "lang.json"
+  ]
+}

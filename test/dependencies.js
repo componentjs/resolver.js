@@ -4,8 +4,13 @@
 
 var resolve = require('..')
 
+var join = require('path').join
 var co = require('co')
 var options = {}
+
+function fixture(name) {
+  return join(__dirname, 'fixtures', name)
+}
 
 describe('Dependencies', function () {
   before(function (done) {
@@ -138,5 +143,9 @@ describe('Dependencies', function () {
     var deps = tree.dependencies['visionmedia/superagent'].dependencies
     deps.should.not.have.property('RedVentures/reduce')
     deps['redventures/reduce'].type.should.equal('dependency')
+  }))
+
+  it('should resolve component-process#11', co(function* () {
+    var tree = yield* resolve(fixture('remoe-process-11'))
   }))
 })

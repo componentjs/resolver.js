@@ -1,0 +1,17 @@
+{
+  "name": "translation",
+  "description": "translation",
+  "development": {},
+  "main": "translation.js",
+  "scripts": [
+    "translation.js"
+  ],
+  "locals": [
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ]
+}

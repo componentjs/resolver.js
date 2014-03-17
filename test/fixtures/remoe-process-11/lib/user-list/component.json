@@ -1,0 +1,21 @@
+{
+  "name": "user-list",
+  "description": "user-list",
+  "development": {},
+  "main": "user-list.js",
+  "scripts": [
+    "user-list.js"
+  ],
+  "locals": [
+    "user"
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*"
+  }
+}

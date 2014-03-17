@@ -1,0 +1,25 @@
+{
+  "name": "user-signin",
+  "scripts": [
+    "user-signin.js"
+  ],
+  "locals": [
+    "user",
+    "translation",
+    "router"
+  ],
+  "json": [
+    "lang.json"
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*",
+    "visionmedia/superagent": "*",
+    "component/cookie": "*"
+  }  
+}

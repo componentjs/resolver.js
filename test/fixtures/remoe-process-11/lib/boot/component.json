@@ -1,0 +1,20 @@
+{
+  "name": "boot",
+  "main": "boot.js",
+  "scripts": [
+    "boot.js"
+  ],
+  "locals": [
+    "base-styles",
+    "translation",
+    "router"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+    "segmentio/load-script-once": "*"
+  }
+
+}
+

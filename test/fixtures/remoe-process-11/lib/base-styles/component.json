@@ -1,0 +1,6 @@
+{
+  "name": "base-styles",
+  "styles": [
+    "*.styl"
+  ]
+}

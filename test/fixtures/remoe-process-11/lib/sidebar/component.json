@@ -1,0 +1,19 @@
+{
+  "name": "sidebar",
+  "description": "sidebar",
+  "development": {},
+  "main": "sidebar.js",
+  "scripts": [
+    "sidebar.js"
+  ],
+  "locals": [
+    "user-list",
+    "user-search"
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ]
+}

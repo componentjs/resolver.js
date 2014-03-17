@@ -1,0 +1,13 @@
+{
+  "name": "TEST",
+  "paths": [
+    "lib"
+  ],
+  "locals": [
+    "boot",
+    "home-view",
+    "dashboard-view"
+  ],
+  "dependencies": {
+  }
+}

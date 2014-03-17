@@ -1,0 +1,16 @@
+{
+  "name": "header",
+  "scripts": [
+    "header.js"
+  ],
+  "locals": [   
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+  }  
+}

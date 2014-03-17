@@ -1,0 +1,27 @@
+{
+  "name": "dashboard-view",
+  "description": "Dashboard View",
+  "development": {},
+  "main": "dashboard.js",
+  "scripts": [
+    "dashboard.js"
+  ],
+  "locals": [
+    "base-styles",
+    "header",
+    "router",
+    "user",
+    "translation",
+    "sidebar"
+  ],
+  "json": [
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*"
+  }
+}

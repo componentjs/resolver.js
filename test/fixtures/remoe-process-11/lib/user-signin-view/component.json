@@ -1,0 +1,22 @@
+{
+  "name": "user-signin-view",
+  "description": "user-signin-view",
+  "main": "user-signin-view.js",
+  "scripts": [
+    "user-signin-view.js"
+  ],
+  "locals": [
+    "header",
+    "translation",
+    "user-signin"
+  ],
+  "templates": [
+    "*.jade"
+  ],
+  "styles": [
+    "*.styl"
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*"
+  }
+}

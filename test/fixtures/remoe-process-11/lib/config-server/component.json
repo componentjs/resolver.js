@@ -1,0 +1,8 @@
+{
+  "name": "config-server",
+  "description": "Configuration for the server",
+  "locals": [
+    "translation"
+  ],
+  "development": {}
+}

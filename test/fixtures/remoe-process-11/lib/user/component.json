@@ -1,0 +1,12 @@
+{
+  "name": "user",
+  "scripts": [
+    "user.js"
+  ],
+  "locals": [
+  ],
+  "dependencies": {
+    "component/domify": "*",
+    "visionmedia/superagent": "*"
+  }
+}

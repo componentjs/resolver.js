@@ -1,0 +1,8 @@
+{
+  "name": "translation-mail",
+  "description": "translation-mail",
+  "development": {},
+  "json": [
+    "lang.json"
+  ]
+}
