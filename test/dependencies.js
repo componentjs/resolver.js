@@ -109,6 +109,16 @@ describe('Dependencies', function () {
     hgp.dependencies['component/classes'].should.be.ok
   }))
 
+  it('should work with ianstormtaylor/router', co(function* () {
+    var tree = yield* resolve({
+      dependencies: {
+        'ianstormtaylor/router': '*'
+      }
+    })
+
+    tree.dependencies['ianstormtaylor/router'].should.be.ok
+  }))
+
   it('should resolve multiple nested semver deps', co(function* () {
     var tree = yield* resolve({
       dependencies: {
