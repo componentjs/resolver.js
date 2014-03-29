@@ -13,6 +13,7 @@ This uses:
 - [remotes](https://github.com/component/remotes.js) - normalize remote end points
 - [downloader](https://github.com/component/downloader.js) - downloads repositories
 - [flatten](https://github.com/component/flatten.js) - flatten a dependency tree into a list
+- [validator](https://github.com/component/validator.js) - validate `component.json`s
 
 ## Example
 
@@ -45,20 +46,21 @@ resolve({
 
 ### resolve(component, [options], [callback])
 
-`component` can either be a "root" folder. If `null`, it's `process.cwd()`. `component` can also be "component.json" object. This is useful for resolving dependencies without reading anything from disk.
+`component` can be a "root" folder, `process.cwd()` by default. `component` can also be "component.json" object. This is useful for resolving dependencies without reading anything from disk. You __should__ at least set it to `null`.
 
 The main `options` are:
 
 - `root` <process.cwd()> - if `component.json` is an object, this will set the root.
 - `remote` - a `remotes` instance. Defaults to the local `dir` and `github`.
-- `dev` <false> - include `development` in `local` components
-- `deps` <true> - resolve dependencies
-- `verbose` <false> - print warnings
+- `local` <true> - try resolving against locally installed components. Only relevant if you don't set a remote.
+- `development` <false> - include `development` in `local` components
+- `dependencies` <true> - resolve dependencies
+- `verbose` <false> - print warnings and status messages
 - `concurrency` <{}> - an object with concurrency values for different channels. Defaults:
 
     - `locals: 16`
     - `dependencies: 5`
-    - `semver: 5`
+    - `semver: 1`
     - `installs: 5`
     - `downloads: 1`
 
