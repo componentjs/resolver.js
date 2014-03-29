@@ -30,8 +30,8 @@ describe('Resolver', function () {
     }))
 
     it('should have canonical names', co(function* () {
-      branches[0].canonical.should.equal('component/emitter@1.1.1');
-      branches[1].canonical.should.equal('component/domify@1.0.0');
+      branches[0].canonical.should.equal('component~emitter@1.1.1');
+      branches[1].canonical.should.equal('component~domify@1.0.0');
       branches[2].canonical.should.equal('./lib/boot');
       branches[3].canonical.should.equal('./app1');
     }))

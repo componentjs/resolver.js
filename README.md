@@ -93,7 +93,7 @@ There are two types of branches: `local` for local components and `dependency` f
 
 - `type` - either `local` or `dependency`
 - `name`
-- `canonical` - a canonical, unique name for this component. For remote dependencies, this is `<user>/<project>@<reference>`. For local components, this is the relative path from `root` to this component's `path`.
+- `canonical` - a canonical, unique name for this component. For remote dependencies, this is `<user>~<project>@<reference>`. For local components, this is the relative path from `root` to this component's `path`. `~` is used instead of `/` or `-` to ensure canonical names are in fact unique.
 - `dependencies` {} - remote dependencies of this component
 - `locals` {} - local dependencies of this component
 - `dependents` [] - dependents of this component
