@@ -58,11 +58,4 @@ describe('Flatten', function () {
     Object.keys(nodes.duplicates['component/emitter'])
     .length.should.equal(2);
   }))
-
-  it('should detect conflicting local names', co(function* () {
-    var tree = yield* resolve(fixture('conflicts'));
-    var nodes = resolve.flatten(tree, true);
-
-    nodes.conflicts.name.length.should.equal(2);
-  }))
 })
