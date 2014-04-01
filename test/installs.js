@@ -5,6 +5,7 @@
 var resolve = require('..')
 
 var co = require('co')
+var assert = require('assert');
 var rimraf = require('rimraf')
 var join = require('path').join
 var fs = require('fs')
@@ -102,5 +103,20 @@ describe('Installer', function () {
       err.message.should.not.equal('wtf');
       err.message.should.equal('no remote found for dependency "component-test/asdfasdf".');
     }
+  }))
+
+  it('should not install dependencies\'s dev deps during development', co(function* () {
+    yield rimraf.bind(null, components);
+
+    var tree = yield* resolve({
+      dependencies: {
+        'component/query': '*'
+      }
+    }, {
+      install: true,
+      development: true,
+    }, options);
+
+    assert.ok(!fs.existsSync(join(process.cwd(), 'components/component/zest')));
   }))
 })
