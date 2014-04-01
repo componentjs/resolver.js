@@ -21,7 +21,7 @@
     "generator-supported": "~0.0.1",
     "component-validator": "~0.0.0",
     "component-flatten": "~0.0.0",
-    "component-downloader": "~0.0.0",
+    "component-downloader": "^1.0.0",
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.1",
