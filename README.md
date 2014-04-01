@@ -67,22 +67,22 @@ The main `options` are:
 Options passed to `component-downloader`:
 
 - `install` <false> - install components to `out`
-- `dir` <`components`> - folder to install components to
-- `fields`
-- `archive`
+- `out` <`components`> - folder to install components to
+- `fields` - fields of `component.json`s to download files, defaults to those defined in the spec
+- `archive` - install entire repositories instead of just necessary files
 
 `callback` is a function with signature `(err, tree)`. You if no callback is set, a generator is returned.
 
 ```js
 resolve(root, options, function (err, tree) {
 
-})
+});
 
 // or if you use generators
 
 co(function* () {
   var tree = yield* resolve(root, options);
-})
+})();
 ```
 
 ### tree and branches
@@ -93,7 +93,7 @@ There are two types of branches: `local` for local components and `dependency` f
 
 - `type` - either `local` or `dependency`
 - `name`
-- `canonical` - a canonical, unique name for this component. For remote dependencies, this is `<user>~<project>@<reference>`. For local components, this is the relative path from `root` to this component's `path`. `~` is used instead of `/` or `-` to ensure canonical names are in fact unique.
+- `canonical` - a canonical, unique name for this component. For remote dependencies, this is `<user>~<project>@<reference>`. For local components, this is the relative path from `root` to this component's `path`. `~` is used instead of `/` or `-` to ensure canonical names are in fact unique and do not look like paths.
 - `dependencies` {} - remote dependencies of this component
 - `locals` {} - local dependencies of this component
 - `dependents` [] - dependents of this component
@@ -104,14 +104,14 @@ There are two types of branches: `local` for local components and `dependency` f
 - `remotes` - list of remote names to lookup dependencies of this component. `remotes` are inherited from their parent.
 - `resolvedRemotes` - a list of all the remotes, including this component's parents'
 
-Dependencies have:
+Locals additionally have:
+
+- `relativePath` - relative path to the local component's folder resolved against `root`
+
+Dependencies additionally have:
 
 - `ref` - git reference such as `master`, `v1.0.0`, etc.
 - `version` - the semantic version, if any
-
-### var nodes = resolve.flatten(tree)
-
-Flattens a tree for building in the proper dependency order. You can also manipulate the tree if you'd like. Read more about [component-flatten](https://github.com/component/flatten.js).
 
 ## License
 
