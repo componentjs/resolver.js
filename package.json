@@ -9,14 +9,7 @@
     "twitter": "https://twitter.com/jongleberry"
   },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/component/resolver.js.git"
-  },
-  "bugs": {
-    "mail": "me@jongleberry.com",
-    "url": "https://github.com/component/resolver.js/issues"
-  },
+  "repository": "component/resolver.js",
   "dependencies": {
     "generator-supported": "~0.0.1",
     "component-validator": "~0.0.0",
