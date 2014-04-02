@@ -1,4 +1,10 @@
 
+1.0.2 / 2014-04-02
+==================
+
+ * change validator to only log during `component-validate`
+ * bump deps
+
 1.0.1 / 2014-04-02
 ==================
 
