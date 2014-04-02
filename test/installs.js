@@ -119,4 +119,28 @@ describe('Installer', function () {
 
     assert.ok(!fs.existsSync(join(process.cwd(), 'components/component/zest')));
   }))
+
+  it('should install component/notification@*', co(function* () {
+    yield rimraf.bind(null, components);
+
+    var tree = yield* resolve({
+      dependencies: {
+        'component/notification': '*'
+      }
+    }, {
+      install: true,
+    })
+  }))
+
+  it('should install component/notification@master', co(function* () {
+    yield rimraf.bind(null, components);
+
+    var tree = yield* resolve({
+      dependencies: {
+        'component/notification': 'master'
+      }
+    }, {
+      install: true,
+    })
+  }))
 })
