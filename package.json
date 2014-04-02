@@ -15,13 +15,13 @@
     "component-validator": "^1.0.0",
     "component-flatten": "^1.0.0",
     "component-downloader": "^1.0.0",
+    "remotes": "^1.0.0",
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.1",
-    "remotes": "~0.2.0",
     "semver": "^2.2.1",
     "cogent": "~0.4.1",
-    "chanel": "~2.0.2",
+    "chanel": "^2.0.2",
     "co": "^3"
   },
   "devDependencies": {
@@ -34,8 +34,5 @@
   "scripts": {
     "test": "NODE=gnode make test",
     "prepublish": "make clean build"
-  },
-  "engines": {
-    "node": ">= 0.11.4"
   }
 }
