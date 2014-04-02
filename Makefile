@@ -3,11 +3,10 @@ NODE ?= node
 SRC = $(shell find lib -name "*.js")
 BUILD = $(subst lib,build,$(SRC))
 
-build:
-	@mkdir -p build
-	@$(MAKE) $(BUILD)
+build: $(BUILD)
 
 build/%.js: lib/%.js
+	@mkdir -p build
 	@$(BIN)regenerator --include-runtime $< > $@
 
 clean:
