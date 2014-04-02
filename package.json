@@ -12,10 +12,10 @@
   "repository": "component/resolver.js",
   "dependencies": {
     "generator-supported": "~0.0.1",
-    "component-validator": "^1.0.0",
+    "component-validator": "^1.0.2",
     "component-flatten": "^1.0.0",
-    "component-downloader": "^1.0.0",
-    "remotes": "^1.0.0",
+    "component-downloader": "^1.0.1",
+    "remotes": "^1.0.1",
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.1",
