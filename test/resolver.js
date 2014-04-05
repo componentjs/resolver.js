@@ -2,10 +2,11 @@
  * Put any tests you don't know where else to put here!
  */
 
-var resolve = require('..')
+var fs = require('fs');
+var co = require('co');
+var join = require('path').join;
 
-var co = require('co')
-var join = require('path').join
+var resolve = require('..');
 
 function fixture(name) {
   return join(__dirname, 'fixtures', name)
@@ -49,5 +50,17 @@ describe('Resolver', function () {
 
     boot.dependencies['component/emitter']
     .should.not.equal(tree.dependencies['component/emitter'])
+  }))
+
+  it('should work with missing arguments', co(function* () {
+    fs.writeFileSync('component.json', JSON.stringify({
+      name: 'app',
+      dependencies: {
+        'component/emitter': '*'
+      }
+    }), null, 2);
+
+    yield* resolve();
+    yield* resolve(null, {});
   }))
 })
