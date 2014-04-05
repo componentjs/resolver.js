@@ -87,7 +87,7 @@ describe('Installer', function () {
       throw new Error('wtf');
     } catch (err) {
       err.message.should.not.equal('wtf');
-      err.message.should.equal('no remote found for dependency "component-test/asdfasdf@0.0.1".');
+      err.message.should.include('no remote found for dependency "component-test/asdfasdf@0.0.1".');
     }
   }))
 
@@ -101,7 +101,7 @@ describe('Installer', function () {
       throw new Error('wtf');
     } catch (err) {
       err.message.should.not.equal('wtf');
-      err.message.should.equal('no remote found for dependency "component-test/asdfasdf".');
+      err.message.should.include('no remote found for dependency "component-test/asdfasdf".');
     }
   }))
 
