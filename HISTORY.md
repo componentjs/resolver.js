@@ -1,4 +1,14 @@
 
+1.1.0 / 2014-04-06
+==================
+
+ * add bitbucket support (@netpoetica)
+
+1.0.3 / 2014-04-05
+==================
+
+ * link install errors to `component open troubleshooting`
+
 1.0.2 / 2014-04-02
 ==================
 
