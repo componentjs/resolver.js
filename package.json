@@ -1,7 +1,7 @@
 {
   "name": "component-resolver",
   "description": "resolve local and remote dependencies",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Jonathan Ong",
     "email": "me@jongleberry.com",
@@ -14,13 +14,13 @@
     "generator-supported": "~0.0.1",
     "component-validator": "^1.0.2",
     "component-flatten": "^1.0.0",
-    "component-downloader": "^1.1.0",
-    "remotes": "^1.1.0",
+    "component-downloader": "^1.1.1",
+    "remotes": "^1.1.1",
     "debug": "*",
     "graceful-fs": "^2.0.1",
-    "unglob": "~0.1.1",
+    "unglob": "~0.1.2",
     "semver": "^2.2.1",
-    "cogent": "~0.4.1",
+    "cogent": "~0.4.3",
     "chanel": "^2.0.2",
     "co": "^3"
   },
