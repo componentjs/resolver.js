@@ -1,4 +1,14 @@
 
+1.1.3 / 2014-05-12
+==================
+
+ * using regenerator 0.4.6 (pinned) to build a working release
+
+1.1.2 / 2014-05-12
+==================
+
+ * adding `timeout` and `retries` to `remotes.options`
+
 1.1.1 / 2014-04-07
 ==================
 
