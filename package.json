@@ -25,11 +25,11 @@
     "co": "^3"
   },
   "devDependencies": {
-    "rimraf": "^2.2.5",
-    "mocha": "^1.17.0",
-    "should": "^3.0.0",
     "gnode": "0",
-    "regenerator": "0"
+    "mocha": "^1.17.0",
+    "regenerator": "^0.4.6",
+    "rimraf": "^2.2.5",
+    "should": "^3.0.0"
   },
   "scripts": {
     "test": "NODE=gnode make test",
