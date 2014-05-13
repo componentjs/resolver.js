@@ -27,7 +27,7 @@
   "devDependencies": {
     "gnode": "0",
     "mocha": "^1.17.0",
-    "regenerator": "^0.4.6",
+    "regenerator": "0.4.6",
     "rimraf": "^2.2.5",
     "should": "^3.0.0"
   },
