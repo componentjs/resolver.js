@@ -1,4 +1,10 @@
 
+1.1.4 / 2014-05-26
+==================
+
+ * normalize local `branch.conanical` path separators to `/` for all platform
+ * added tests
+
 1.1.3 / 2014-05-12
 ==================
 

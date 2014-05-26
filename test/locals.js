@@ -96,4 +96,15 @@ describe('Locals', function () {
     var tree = yield* resolve(fixture('old-local'));
     tree.locals.boot.should.be.ok;
   }))
+
+  it('should have normalized canonical path separators', co(function* () {
+    var tree = yield* resolve(fixture('one-path'));
+
+    tree.paths.should.have.length(1)
+    tree.name.should.equal('one-path')
+
+    var what = tree.locals['what']
+    what.canonical.should.equal('./stuff/what')
+  }))
+
 })
