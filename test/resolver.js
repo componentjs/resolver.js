@@ -62,5 +62,7 @@ describe('Resolver', function () {
 
     yield* resolve();
     yield* resolve(null, {});
+
+    try {fs.unlinkSync('component.json');} catch(e) {}
   }))
 })
