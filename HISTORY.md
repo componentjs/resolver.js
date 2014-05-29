@@ -1,4 +1,10 @@
 
+1.1.5 / 2014-05-29
+==================
+
+ * Updated `.npmignore` to ignore test residual `components` folder and `component.json`
+ * Updated `./test/resolver.js` to cleanup temporary `component.json`
+
 1.1.4 / 2014-05-26
 ==================
 
