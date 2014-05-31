@@ -1,4 +1,9 @@
 
+1.1.6 / 2014-05-31
+==================
+
+ * bugfix local `branch.conanical` sep for deep paths
+
 1.1.5 / 2014-05-29
 ==================
 
