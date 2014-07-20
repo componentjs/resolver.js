@@ -47,7 +47,7 @@ describe('Installer', function () {
 
   it('should install simple-dependencies', co(function* () {
     var tree = yield* resolve(fixture('simple-dependencies'), options);
-    fs.statSync(join(components, 'component', 'emitter', '1.1.2', 'component.json'))
+    fs.statSync(join(components, 'component', 'emitter', '1.1.3', 'component.json'))
     fs.statSync(join(components, 'component', 'domify', '1.1.1', 'component.json'))
   }))
 
