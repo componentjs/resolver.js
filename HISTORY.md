@@ -1,4 +1,9 @@
 
+1.1.7 / 2014-07-21
+==================
+
+ * issue#12, check non-local remotes when semver not satisfied locally
+
 1.1.6 / 2014-05-31
 ==================
 
