@@ -1,4 +1,9 @@
 
+1.1.8 / 2014-07-26
+==================
+
+ * further to issue#12, only lookup non-local versions if not looking for '*' (master)
+
 1.1.7 / 2014-07-21
 ==================
 
