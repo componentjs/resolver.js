@@ -12,6 +12,15 @@ function fixture(name) {
 }
 
 describe('Locals', function () {
+  it('should allow resolving a component below root', co(function* () {
+    try {
+      var tree = yield* resolve(fixture('below-root'));
+      tree.name.should.equal('below-root')
+    } catch(err){
+      err.should.equal(null);
+    }
+  }))
+
   it('should work with a single main', co(function* () {
     var tree = yield* resolve(fixture('simple'));
 
