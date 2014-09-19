@@ -1,4 +1,4 @@
-# component-resolver [![Build Status](https://travis-ci.org/component/resolver.js.png)](https://travis-ci.org/component/resolver.js)
+# component-resolver [![Build Status](https://travis-ci.org/componentjs/resolver.js.png)](https://travis-ci.org/componentjs/resolver.js)
 
 Resolve a component's dependency tree.
 
