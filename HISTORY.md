@@ -1,3 +1,7 @@
+1.2.0 / 2014-09-19
+==================
+
+ * issue#22, `can not require components below the root` use utils.warn() instead of throwing an error
 
 1.1.8 / 2014-07-26
 ==================
