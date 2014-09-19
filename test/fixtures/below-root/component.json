@@ -1,0 +1,9 @@
+{
+  "name": "below-root",
+  "paths": [
+    "../two-path/one"
+  ],
+  "locals": [
+    "uno"
+  ]
+}
