@@ -1,3 +1,10 @@
+1.2.1 / 2013-09-27
+==================
+
+* support omitting name for nested locals like `foo/bar`
+* add tests for handing `*` as dependency
+* update dependencies
+
 1.2.0 / 2014-09-19
 ==================
 
