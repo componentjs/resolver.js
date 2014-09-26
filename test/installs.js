@@ -143,4 +143,39 @@ describe('Installer', function () {
       install: true,
     })
   }))
+
+  it('should fetch master for * when no tags available', co(function* () {
+    yield rimraf.bind(null, components);
+
+    var tree = yield* resolve({
+      dependencies: {
+        'timaschew/component-asterisk-no-tags': '*'
+      }
+    }, {
+      install: true,
+    })
+
+    var out = join(components, 'timaschew', 'component-asterisk-no-tags', 'master')
+    fs.statSync(join(out, 'index.js'))
+    var json = require(join(out, 'component.json'))
+    json.version.should.eql('0.0.2')
+  }))
+
+  // in the next release this should pass
+  it('should fetch lastest tag for * when tags available', co(function* () {
+
+    var tree = yield* resolve({
+      dependencies: {
+        'timaschew/component-asterisk-with-tags': '*'
+      }
+    }, {
+      install: true,
+    })
+
+    var out = join(components, 'timaschew', 'component-asterisk-with-tags', '0.0.1')
+    fs.statSync(join(out, 'index.js'))
+    var json = require(join(out, 'component.json'))
+    json.version.should.eql('0.0.1')
+
+  }))
 })
