@@ -1,7 +1,7 @@
 {
   "name": "component-resolver",
   "description": "resolve local and remote dependencies",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": {
     "name": "Jonathan Ong",
     "email": "me@jongleberry.com",
@@ -16,7 +16,7 @@
     "component-validator": "^1.1.1",
     "component-flatten": "^1.0.1",
     "component-downloader": "^1.1.4",
-    "remotes": "^1.1.5",
+    "component-remotes": "^1.1.5",
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.2",
