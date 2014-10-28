@@ -1,9 +1,26 @@
-1.2.1 / 2013-09-27
+1.2.6 / 2013-10-28
+==================
+
+* use debug instead of consoler.warn for _requiring components below root_
+
+1.2.5 / 2013-10-13
+==================
+
+* show require path for warning _requiring components below root_
+
+1.2.4 / 2013-10-05
+==================
+
+* disable concurrency, workaround for [builder2.js/#29](https://github.com/componentjs/builder2.js/issues/29)
+* fix travis credentials
+
+1.2.3 / 2013-09-27
 ==================
 
 * support omitting name for nested locals like `foo/bar`
 * add tests for handing `*` as dependency
 * update dependencies
+* switch to new npm remotes name: __component-remotes__
 
 1.2.0 / 2014-09-19
 ==================
