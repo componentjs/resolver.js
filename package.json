@@ -1,7 +1,7 @@
 {
   "name": "component-resolver",
   "description": "resolve local and remote dependencies",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "author": {
     "name": "Jonathan Ong",
     "email": "me@jongleberry.com",
