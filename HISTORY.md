@@ -1,3 +1,7 @@
+1.2.8 / 2015-01-22
+==================
+- fix [component#621](https://github.com/componentjs/component/issues/621) - not resolving semver in some cases
+
 1.2.7 / 2013-10-30
 ==================
 
