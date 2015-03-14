@@ -1,3 +1,7 @@
+1.3.0 / 2015-03-14
+==================
+- update component-downloader and component-remotes due to shrinkwrapper support
+
 1.2.8 / 2015-01-22
 ==================
 - fix [component#621](https://github.com/componentjs/component/issues/621) - not resolving semver in some cases
