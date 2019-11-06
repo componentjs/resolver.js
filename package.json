@@ -20,7 +20,7 @@
     "debug": "*",
     "graceful-fs": "^2.0.1",
     "unglob": "~0.1.2",
-    "semver": "^2.2.1",
+    "semver": "^6.3.0",
     "chanel": "^2.0.2",
     "co": "^3"
   },
